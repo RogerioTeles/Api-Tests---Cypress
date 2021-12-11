@@ -4,7 +4,7 @@ let accessToken = Cypress.env('accessToken');
 describe("Creating an user, updating it and seeing if it was really updated", () => {
     var userId;
     before(() => {
-        cy.generateUser()
+        cy.generateRandomUser()
     })
 
     it("Creating random user and saving his UserId", () => {

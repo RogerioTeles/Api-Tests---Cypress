@@ -1,0 +1,22 @@
+{
+  "name": "cypress-api-testing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/sinon": "^10.0.6",
+    "cypress": "^9.1.0"
+  },
+  "devDependencies": {
+    "cypress-multi-reporters": "^1.5.0",
+    "faker": "^5.5.3",
+    "mocha": "^9.1.3",
+    "mochawesome": "^7.0.1"
+  }
+}

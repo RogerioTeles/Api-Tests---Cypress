@@ -7,6 +7,7 @@ before(() => {
     })
 })
 
+
 describe('Given the User API', () => {
     context('When I send POST /User', () => {
         it('Then it should create a new user', () => {
@@ -54,8 +55,6 @@ describe('Given the User API', () => {
                     expect(res.body.data.message).to.eq('Authentication failed')
                 })
             })
-
-
         });
     })
 })

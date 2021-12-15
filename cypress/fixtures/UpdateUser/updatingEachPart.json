@@ -1,6 +1,14 @@
 {
-  "name": "Jose Bins",
-  "gender": "female",
-  "email": "Taurean.Dietrich52@gmail.com",
-  "status": "inactive"
+  "onlyName": {
+    "name": "Miss Mary Gulgowski"
+  },
+  "onlyGender": {
+    "gender": "female"
+  },
+  "onlyEmail": {
+    "email": "Tara_Glover2@hotmail.com"
+  },
+  "onlyStatus": {
+    "status": "active"
+  }
 }

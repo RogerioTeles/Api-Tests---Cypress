@@ -1,6 +1,7 @@
 const {
     random
 } = require('faker');
+const { once } = require('lodash');
 
 Cypress.Commands.add('savingGetUser', (id, name, email, gender, status) => {
     cy.writeFile('cypress/fixtures/GetUser/randomUserFromGET.json', {
@@ -64,6 +65,44 @@ Cypress.Commands.add('savingRandomUser', (realMethod) => {
             })
         });
     })
+})
 
+Cypress.Commands.add('generateUpdateRandomUser', () => {
+    //need to create a random user using the savingrandomuser
+    var gender = ['male', 'female'];
+    var status = ['active', 'inactive'];
+    const faker = require('faker');
+    
+    cy.writeFile('cypress/fixtures/UpdateUser/updatingAllUser.json', {
+        'name': `${faker.name.findName()}`,
+        'gender': `${faker.random.arrayElement(gender)}`,
+        'email': `${faker.internet.email()}`,
+        'status': `${faker.random.arrayElement(status)}`
+    })
 
+    //then i need to create a random data to update all users 
+   // then i need to create a random user and update each part of the user once
+})
+
+Cypress.Commands.add('generateUpdateRandomData',() => {
+
+    var gender = ['male', 'female'];
+    var status = ['active', 'inactive'];
+    const faker = require('faker');
+    
+    cy.writeFile('cypress/fixtures/UpdateUser/updatingEachPart.json', {
+        'onlyName':{
+            'name': `${faker.name.findName()}`
+        },
+        'onlyGender':{
+            'gender': `${faker.random.arrayElement(gender)}`,
+        },
+        'onlyEmail':{
+            'email': `${faker.internet.email()}`
+        },
+        'onlyStatus':{
+            'status': `${faker.random.arrayElement(status)}`
+        }
+
+    })
 })

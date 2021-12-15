@@ -1,9 +1,5 @@
-const {
-    random
-} = require('faker');
-const { once } = require('lodash');
 
-Cypress.Commands.add('savingGetUser', (id, name, email, gender, status) => {
+Cypress.Cmmands.add('savingGetUser', (id, name, email, gender, status) => {
     cy.writeFile('cypress/fixtures/GetUser/randomUserFromGET.json', {
         'id': id,
         'name': name,
@@ -89,7 +85,7 @@ Cypress.Commands.add('generateUpdateRandomData',() => {
     var gender = ['male', 'female'];
     var status = ['active', 'inactive'];
     const faker = require('faker');
-    
+
     cy.writeFile('cypress/fixtures/UpdateUser/updatingEachPart.json', {
         'onlyName':{
             'name': `${faker.name.findName()}`

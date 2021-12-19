@@ -2,7 +2,6 @@
 describe('Given the Users api', () => {
     context('When I Send Get /users', () => {
         it('Then it should return a list with 20 registered users', () => {
-
             cy.request({
                 method: 'GET',
                 url: 'https://gorest.co.in/public/v1/users/',
@@ -54,7 +53,6 @@ describe('Given the Users api', () => {
 
     context('When i send GET /user passing an userid that doesnt exists as an URL Param', () => {
         it('Then it should return an message informing that the user was not found', () => {
-
             cy.request({
                 method: 'get',
                 url: 'https://gorest.co.in/public/v1/users/0000',

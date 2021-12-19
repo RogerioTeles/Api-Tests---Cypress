@@ -3,6 +3,7 @@
 before(() => {
     cy.savingRandomUser('delete');
 });
+
 describe('Given User API', () => {
     context('When I send DELETE /user passing an userID as an URL param', () => {
         it('Then the user should be deleted from the API', () => {

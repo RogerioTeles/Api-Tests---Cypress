@@ -1,14 +1,14 @@
 {
   "onlyName": {
-    "name": "Miss Mary Gulgowski"
+    "name": "Preston Olson"
   },
   "onlyGender": {
-    "gender": "female"
+    "gender": "male"
   },
   "onlyEmail": {
-    "email": "Tara_Glover2@hotmail.com"
+    "email": "Federico11@hotmail.com"
   },
   "onlyStatus": {
-    "status": "active"
+    "status": "inactive"
   }
 }

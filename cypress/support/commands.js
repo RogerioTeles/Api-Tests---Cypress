@@ -1,5 +1,5 @@
 
-Cypress.Cmmands.add('savingGetUser', (id, name, email, gender, status) => {
+Cypress.Commands.add('savingGetUser', (id, name, email, gender, status) => {
     cy.writeFile('cypress/fixtures/GetUser/randomUserFromGET.json', {
         'id': id,
         'name': name,

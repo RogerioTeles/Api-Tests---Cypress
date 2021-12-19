@@ -55,6 +55,11 @@ describe('Given User API', () => {
                         expect(response.status).to.eq(200);
                         expect(response.body.data.id).to.eq(UserToBeUpdated.id);
                         expect(response.body.data.name).to.eq(newData.onlyName.name);
+                        cy.fixture('UpdateUser/updatingAllUser').then(oldUser=>{
+                            expect(response.body.data.gender).to.eq(oldUser.gender);
+                            expect(response.body.data.email).to.eq(oldUser.email);
+                            expect(response.body.data.status).to.eq(oldUser.status);
+                        })
 
                     })
                 })

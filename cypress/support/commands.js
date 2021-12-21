@@ -9,6 +9,7 @@ Cypress.Commands.add('savingGetUser', (id, name, email, gender, status) => {
     })
 })
 
+
 Cypress.Commands.add('savingPostUser', (id, name, email, gender, status, realMethod) => {
 
     var path;
@@ -43,7 +44,6 @@ Cypress.Commands.add('generateRandomUser', () => {
 
 Cypress.Commands.add('savingRandomUser', (realMethod) => {
 
-
     cy.generateRandomUser().then(() => {
         cy.fixture('randomUser').then(randomUser => {
             cy.request({
@@ -63,22 +63,6 @@ Cypress.Commands.add('savingRandomUser', (realMethod) => {
     })
 })
 
-Cypress.Commands.add('generateUpdateRandomUser', () => {
-    //need to create a random user using the savingrandomuser
-    var gender = ['male', 'female'];
-    var status = ['active', 'inactive'];
-    const faker = require('faker');
-    
-    cy.writeFile('cypress/fixtures/UpdateUser/updatingAllUser.json', {
-        'name': `${faker.name.findName()}`,
-        'gender': `${faker.random.arrayElement(gender)}`,
-        'email': `${faker.internet.email()}`,
-        'status': `${faker.random.arrayElement(status)}`
-    })
-
-    //then i need to create a random data to update all users 
-   // then i need to create a random user and update each part of the user once
-})
 
 Cypress.Commands.add('generateUpdateRandomData',() => {
 
@@ -87,18 +71,57 @@ Cypress.Commands.add('generateUpdateRandomData',() => {
     const faker = require('faker');
 
     cy.writeFile('cypress/fixtures/UpdateUser/updatingEachPart.json', {
-        'onlyName':{
+        'name':{
             'name': `${faker.name.findName()}`
         },
-        'onlyGender':{
+        'gender':{
             'gender': `${faker.random.arrayElement(gender)}`,
         },
-        'onlyEmail':{
+        'email':{
             'email': `${faker.internet.email()}`
         },
-        'onlyStatus':{
+        'status':{
             'status': `${faker.random.arrayElement(status)}`
-        }
-
+        },
+        'AllUser':{
+            'name': `${faker.name.findName()}`,
+            'gender': `${faker.random.arrayElement(gender)}`,
+            'email': `${faker.internet.email()}`,
+            'status': `${faker.random.arrayElement(status)}`
+        },
+        'nullValues':{
+            'name': null,
+            'gender':null,
+            'email':null,
+            'status':null
+        },
+        'nullName':{
+            'name':null
+        },
+        'nullGender':{
+            'gender': null
+        },
+        'nullEmail':{
+            'email': null
+        },
+        'nullStatus':{
+            'status': null
+        },
     })
 })
+
+Cypress.Commands.add('deleteUser',(userId)=>{
+        cy.request({
+            method: 'delete',
+            url: 'https://gorest.co.in/public/v1/users/' + userId,
+            headers: {
+                'Authorization': 'Bearer ' + Cypress.env('accessToken'),
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }).then((res) => {
+            expect(res.status).to.eq(204);
+            cy.log(JSON.stringify(res.body));
+            expect(res.body.data).to.eq(undefined);
+        })
+});

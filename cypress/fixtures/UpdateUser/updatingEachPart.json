@@ -1,14 +1,38 @@
 {
-  "onlyName": {
-    "name": "Preston Olson"
+  "name": {
+    "name": "Clifton Halvorson"
   },
-  "onlyGender": {
-    "gender": "male"
+  "gender": {
+    "gender": "female"
   },
-  "onlyEmail": {
-    "email": "Federico11@hotmail.com"
+  "email": {
+    "email": "Richard_Boehm@hotmail.com"
   },
-  "onlyStatus": {
+  "status": {
     "status": "inactive"
+  },
+  "AllUser": {
+    "name": "Esther Brekke",
+    "gender": "male",
+    "email": "Jovany.Kertzmann@yahoo.com",
+    "status": "inactive"
+  },
+  "nullValues": {
+    "name": null,
+    "gender": null,
+    "email": null,
+    "status": null
+  },
+  "nullName": {
+    "name": null
+  },
+  "nullGender": {
+    "gender": null
+  },
+  "nullEmail": {
+    "email": null
+  },
+  "nullStatus": {
+    "status": null
   }
 }

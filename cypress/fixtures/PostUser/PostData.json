@@ -1,21 +1,21 @@
 {
   "name": {
-    "name": "Lloyd Auer"
+    "name": "Stanley King"
   },
   "gender": {
     "gender": "male"
   },
   "email": {
-    "email": "Neil99@yahoo.com"
+    "email": "Berry_Kreiger41@yahoo.com"
   },
   "status": {
-    "status": "inactive"
+    "status": "active"
   },
   "AllUser": {
-    "name": "Kirk Braun",
-    "gender": "male",
-    "email": "Jaeden.Boyer@yahoo.com",
-    "status": "active"
+    "name": "Rebecca Ritchie",
+    "gender": "female",
+    "email": "Kaela70@yahoo.com",
+    "status": "inactive"
   },
   "nullValues": {
     "name": null,

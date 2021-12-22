@@ -1,11 +1,5 @@
 /// <reference types="Cypress"/>
 
-let user = {}
-before(() => {
-    cy.fixture('GetUser/randomUserFromGET').then(User => {
-        user = User;
-    })
-});
 describe('Given the Users api', () => {
     context('When I Send Get /users', () => {
         it('Then it should return a list with 20 registered users', () => {
@@ -21,7 +15,7 @@ describe('Given the Users api', () => {
                 expect(res.status).to.eq(200);
                 expect(res.body.meta.pagination.limit).to.eq(res.body.data.length);
                 Cypress._.each(res.body.data, (users) => {
-                    expect(user).to.have.all.keys('id', 'name', 'email', 'gender', 'status');
+                    expect(users).to.have.all.keys('id', 'name', 'email', 'gender', 'status');
                     expect(users.id).to.be.a('number').and.not.be.null;
                     expect(users.email).to.not.be.null;
                     expect(users.gender).to.not.be.null;
@@ -36,6 +30,12 @@ describe('Given the Users api', () => {
 
     context('When i send GET /users passing user id as an URL param', () => {
         it('Then it should return only the filtered user', () => {
+            let user = {}
+
+            cy.readFile('cypress/fixtures/GetUser/randomUserFromGET.json').then((User) => {
+                user = User;
+            
+            
 
                 cy.request({
                     method: 'GET',
@@ -54,6 +54,7 @@ describe('Given the Users api', () => {
                     expect(res.body.data).has.property('email', user.email)
                     expect(res.body.data).has.property('status', user.status)
                 })
+            })
         })
     });
 

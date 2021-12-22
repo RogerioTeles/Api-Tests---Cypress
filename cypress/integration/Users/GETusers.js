@@ -1,7 +1,7 @@
 /// <reference types="Cypress"/>
 
 let user = {}
-beforeEach(() => {
+before(() => {
     cy.fixture('GetUser/randomUserFromGET').then(User => {
         user = User;
     })

@@ -64,13 +64,19 @@ Cypress.Commands.add('savingRandomUser', (realMethod) => {
 })
 
 
-Cypress.Commands.add('generateUpdateRandomData',() => {
+Cypress.Commands.add('generateRandomData',(metodo) => {
 
+    var path;
+    if(metodo == 'update'){
+        path = 'cypress/fixtures/UpdateUser/updatingEachPart.json'
+    }else if(metodo == 'post'){
+        path = 'cypress/fixtures/PostUser/PostData.json'
+    }
     var gender = ['male', 'female'];
     var status = ['active', 'inactive'];
     const faker = require('faker');
 
-    cy.writeFile('cypress/fixtures/UpdateUser/updatingEachPart.json', {
+    cy.writeFile(path, {
         'name':{
             'name': `${faker.name.findName()}`
         },
@@ -109,6 +115,7 @@ Cypress.Commands.add('generateUpdateRandomData',() => {
         },
     })
 })
+
 
 Cypress.Commands.add('deleteUser',(userId)=>{
         cy.request({

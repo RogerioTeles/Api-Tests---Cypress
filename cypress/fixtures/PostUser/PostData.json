@@ -1,20 +1,20 @@
 {
   "name": {
-    "name": "Emily Mayert"
+    "name": "Lloyd Auer"
   },
   "gender": {
     "gender": "male"
   },
   "email": {
-    "email": "Marion_Lebsack81@hotmail.com"
+    "email": "Neil99@yahoo.com"
   },
   "status": {
-    "status": "active"
+    "status": "inactive"
   },
   "AllUser": {
-    "name": "Mrs. Tyler Casper",
-    "gender": "female",
-    "email": "Reyna_Quitzon@yahoo.com",
+    "name": "Kirk Braun",
+    "gender": "male",
+    "email": "Jaeden.Boyer@yahoo.com",
     "status": "active"
   },
   "nullValues": {

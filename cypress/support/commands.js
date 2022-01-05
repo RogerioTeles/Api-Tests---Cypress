@@ -126,9 +126,5 @@ Cypress.Commands.add('deleteUser',(userId)=>{
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             }
-        }).then((res) => {
-            expect(res.status).to.eq(204);
-            cy.log(JSON.stringify(res.body));
-            expect(res.body.data).to.eq(undefined);
         })
 });

@@ -4,19 +4,27 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean:reports":"(if exist cypress\\report (rmdir /Q /S cypress\\report)) && mkdir cypress\\report && mkdir cypress\\report\\mocha  &&  mkdir cypress\\report\\mochawesome-report",
+    "merge":"mochawesome-merge cypress/report/mochawesome-report/*.json > cypress/report/output.json",
+    "generate_report": "marge cypress/report/output.json --reportDir ./ --inline",
+    "final_report":"npm run merge && npm run generate_report",
+    "Cypress:tests": "npm run clean:reports && npx cypress run && npm run final_report"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/sinon": "^10.0.6"
+    "@types/sinon": "^10.0.6",
+    "ls": "^0.2.1",
+    "rimraf": "^3.0.2",
+    "yargs": "^17.3.1"
   },
   "devDependencies": {
     "cypress": "^9.2.0",
     "cypress-multi-reporters": "^1.5.0",
     "faker": "^5.5.3",
     "mocha": "^9.1.3",
-    "mochawesome": "^7.0.1"
+    "mochawesome": "^7.0.1",
+    "mochawesome-merge": "^4.2.1"
   }
 }

@@ -1,0 +1,203 @@
+{
+  "stats": {
+    "suites": 4,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-01-05T02:37:39.887Z",
+    "end": "2022-01-05T02:37:43.129Z",
+    "duration": 3242,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "f627489d-455a-4f32-a87c-643192ad2872",
+      "title": "",
+      "fullFile": "cypress/integration/Users/DELETEusers.js",
+      "file": "cypress/integration/Users/DELETEusers.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "0fb682f5-b04d-487c-a70d-d25ae013a27a",
+          "title": "Given User API",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "6e5bf2db-395f-4c28-b53a-612a34b0e2e0",
+              "title": "When I send DELETE /user passing an userID as an URL param",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Then the user should be deleted from the API",
+                  "fullTitle": "Given User API When I send DELETE /user passing an userID as an URL param Then the user should be deleted from the API",
+                  "timedOut": null,
+                  "duration": 2519,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.request({\n  method: 'delete',\n  url: 'https://gorest.co.in/public/v1/users/' + userToDelete.id,\n  headers: {\n    'Authorization': 'Bearer ' + Cypress.env('accessToken'),\n    'Accept': 'application/json',\n    'Content-Type': 'application/json'\n  }\n}).then(res => {\n  expect(res.status).to.eq(204);\n  cy.log(JSON.stringify(res.body));\n  expect(res.body.data).to.eq(undefined);\n});",
+                  "err": {},
+                  "uuid": "1f816890-8c81-40ed-95d7-c7d158f2dc68",
+                  "parentUUID": "6e5bf2db-395f-4c28-b53a-612a34b0e2e0",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "1f816890-8c81-40ed-95d7-c7d158f2dc68"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 2519,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "4ad4547a-5121-4090-903b-b04d4febad4c",
+              "title": "When I send DELETE /user without access token",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Then it should return an auth error",
+                  "fullTitle": "Given User API When I send DELETE /user without access token Then it should return an auth error",
+                  "timedOut": null,
+                  "duration": 352,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "var accessToken = '';\ncy.request({\n  method: 'delete',\n  url: 'https://gorest.co.in/public/v1/users/' + userToDelete.id,\n  headers: {\n    'Authorization': 'Bearer ',\n    'Accept': 'application/json',\n    'Content-Type': 'application/json'\n  },\n  failOnStatusCode: false\n}).then(res => {\n  cy.log(JSON.stringify(res.body));\n  expect(res.status).to.eq(404);\n  expect(res.body.data.message).to.eq('Resource not found');\n});",
+                  "err": {},
+                  "uuid": "8d34abac-9d24-4ce0-b971-ed8ffcf4c692",
+                  "parentUUID": "4ad4547a-5121-4090-903b-b04d4febad4c",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "8d34abac-9d24-4ce0-b971-ed8ffcf4c692"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 352,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "e1d9a19d-e501-4747-be29-970e6011d8ca",
+              "title": "When I send DELETE /user passing an userID that doesnt exist or was already deleted as an URL param",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Then it should return an message informing that the user was not found",
+                  "fullTitle": "Given User API When I send DELETE /user passing an userID that doesnt exist or was already deleted as an URL param Then it should return an message informing that the user was not found",
+                  "timedOut": null,
+                  "duration": 349,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.request({\n  method: 'delete',\n  url: 'https://gorest.co.in/public/v1/users/' + userToDelete.id,\n  headers: {\n    'Authorization': 'Bearer ' + Cypress.env('accessToken'),\n    'Accept': 'application/json',\n    'Content-Type': 'application/json'\n  },\n  failOnStatusCode: false\n}).then(res => {\n  cy.log(JSON.stringify(res.body));\n  expect(res.status).to.eq(404);\n  expect(res.body.data.message).to.eq('Resource not found');\n});",
+                  "err": {},
+                  "uuid": "91d6030c-d38a-41e5-8b67-1d00751a0de4",
+                  "parentUUID": "e1d9a19d-e501-4747-be29-970e6011d8ca",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "91d6030c-d38a-41e5-8b67-1d00751a0de4"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 349,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.0.1"
+    },
+    "marge": {
+      "options": {
+        "charts": true,
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress/report/mochawesome-report"
+      },
+      "version": "6.0.1"
+    }
+  }
+}

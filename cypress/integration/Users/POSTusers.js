@@ -1,5 +1,7 @@
 /// <reference types="Cypress"/>
 let user = {}
+var userId;
+
 describe('Given the User API', () => {
     before(() => {
         //cy.generateRandomUser();
@@ -27,7 +29,7 @@ describe('Given the User API', () => {
                 expect(response.body.data).has.property('gender', user.AllUser.gender)
                 expect(response.body.data).has.property('email', user.AllUser.email)
                 expect(response.body.data).has.property('status', user.AllUser.status)
-                //userId = res.body.data.id;
+                userId = response.body.data.id;
             })
         });
     })
@@ -180,4 +182,6 @@ describe('Given the User API', () => {
             })
         });
     })
+
+
 })

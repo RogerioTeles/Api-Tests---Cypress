@@ -1,0 +1,203 @@
+{
+  "stats": {
+    "suites": 4,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-01-05T02:37:48.085Z",
+    "end": "2022-01-05T02:37:50.017Z",
+    "duration": 1932,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "eca9d37f-1015-41fd-b760-f8c54959e598",
+      "title": "",
+      "fullFile": "cypress/integration/Users/GETusers.js",
+      "file": "cypress/integration/Users/GETusers.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "69abd0bf-fb03-4b1e-8b69-d3f8a61b1790",
+          "title": "Given the Users api",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "c5c672d2-9276-4db1-9d2e-228b9d6de200",
+              "title": "When I Send Get /users",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Then it should return a list with 20 registered users",
+                  "fullTitle": "Given the Users api When I Send Get /users Then it should return a list with 20 registered users",
+                  "timedOut": null,
+                  "duration": 1173,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.request({\n  method: 'GET',\n  url: 'https://gorest.co.in/public/v1/users/',\n  headers: {\n    'Accept': 'application/json',\n    'Content-Type': 'application/json'\n  }\n}).then(res => {\n  cy.log(JSON.stringify(res.body));\n  expect(res.status).to.eq(200);\n  expect(res.body.meta.pagination.limit).to.eq(res.body.data.length);\n  Cypress._.each(res.body.data, users => {\n    expect(users).to.have.all.keys('id', 'name', 'email', 'gender', 'status');\n    expect(users.id).to.be.a('number').and.not.be.null;\n    expect(users.email).to.not.be.null;\n    expect(users.gender).to.not.be.null;\n    expect(users.status).to.not.be.null;\n  });\n  var usuario = res.body.data[0];\n  cy.savingGetUser(usuario.id, usuario.name, usuario.email, usuario.gender, usuario.status); //expect(res.body.data[0].email).to.not.be.null;\n});",
+                  "err": {},
+                  "uuid": "3b91378c-9e0d-44b7-814e-8ebded8d3c24",
+                  "parentUUID": "c5c672d2-9276-4db1-9d2e-228b9d6de200",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "3b91378c-9e0d-44b7-814e-8ebded8d3c24"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 1173,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "8ac07ef2-52ee-49f8-b934-ff43a3dd2b85",
+              "title": "When i send GET /users passing user id as an URL param",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Then it should return only the filtered user",
+                  "fullTitle": "Given the Users api When i send GET /users passing user id as an URL param Then it should return only the filtered user",
+                  "timedOut": null,
+                  "duration": 366,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "let user = {};\ncy.readFile('cypress/fixtures/GetUser/randomUserFromGET.json').then(User => {\n  user = User;\n  cy.request({\n    method: 'GET',\n    url: 'https://gorest.co.in/public/v1/users/' + user.id,\n    headers: {\n      'Accept': 'application/json',\n      'Content-Type': 'application/json'\n    }\n  }).then(res => {\n    expect(res.status).to.eq(200);\n    cy.log(JSON.stringify(res.body));\n    expect(res.body.data).to.have.all.keys('id', 'name', 'email', 'gender', 'status');\n    expect(res.body.data).has.property('id', user.id);\n    expect(res.body.data).has.property('name', user.name);\n    expect(res.body.data).has.property('gender', user.gender);\n    expect(res.body.data).has.property('email', user.email);\n    expect(res.body.data).has.property('status', user.status);\n  });\n});",
+                  "err": {},
+                  "uuid": "b9089223-3acb-48a1-b776-abd1ea4bbca2",
+                  "parentUUID": "8ac07ef2-52ee-49f8-b934-ff43a3dd2b85",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "b9089223-3acb-48a1-b776-abd1ea4bbca2"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 366,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "f7d5edac-d960-4c90-8ce8-503f0e4b4f32",
+              "title": "When i send GET /user passing an userid that doesnt exists as an URL Param",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Then it should return an message informing that the user was not found",
+                  "fullTitle": "Given the Users api When i send GET /user passing an userid that doesnt exists as an URL Param Then it should return an message informing that the user was not found",
+                  "timedOut": null,
+                  "duration": 325,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.request({\n  method: 'get',\n  url: 'https://gorest.co.in/public/v1/users/0000',\n  headers: {\n    'Accept': 'application/json',\n    'Content-Type': 'application/json'\n  },\n  failOnStatusCode: false\n}).then(res => {\n  expect(res.status).to.eq(404);\n  cy.log(JSON.stringify(res.body));\n  expect(res.body.data.message).to.eq('Resource not found');\n});",
+                  "err": {},
+                  "uuid": "f26441c4-2167-4c07-a223-575858fc94b2",
+                  "parentUUID": "f7d5edac-d960-4c90-8ce8-503f0e4b4f32",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "f26441c4-2167-4c07-a223-575858fc94b2"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 325,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.0.1"
+    },
+    "marge": {
+      "options": {
+        "charts": true,
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress/report/mochawesome-report"
+      },
+      "version": "6.0.1"
+    }
+  }
+}

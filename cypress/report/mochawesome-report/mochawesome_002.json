@@ -1,0 +1,299 @@
+{
+  "stats": {
+    "suites": 5,
+    "tests": 7,
+    "passes": 7,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-01-05T02:37:54.708Z",
+    "end": "2022-01-05T02:37:58.078Z",
+    "duration": 3370,
+    "testsRegistered": 7,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "ae45aace-f2f0-4366-b650-8206ee01c684",
+      "title": "",
+      "fullFile": "cypress/integration/Users/POSTusers.js",
+      "file": "cypress/integration/Users/POSTusers.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "894a4ec5-cffa-47ea-95e1-d61b6a49bc8d",
+          "title": "Given the User API",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "f3bbc3b0-9603-47c1-a50c-9d434004a061",
+              "title": "When I send POST /User with all fields ",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Then it should create a new user",
+                  "fullTitle": "Given the User API When I send POST /User with all fields  Then it should create a new user",
+                  "timedOut": null,
+                  "duration": 1288,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.request({\n  method: 'post',\n  url: 'https://gorest.co.in/public/v1/users',\n  headers: {\n    'Authorization': 'Bearer ' + Cypress.env('accessToken'),\n    'Accept': 'application/json',\n    'Content-Type': 'application/json'\n  },\n  body: user.AllUser\n}).then(response => {\n  cy.log(JSON.stringify(response.body));\n  expect(response.status).to.eq(201);\n  expect(response.body.data).has.property('name', user.AllUser.name);\n  expect(response.body.data).has.property('gender', user.AllUser.gender);\n  expect(response.body.data).has.property('email', user.AllUser.email);\n  expect(response.body.data).has.property('status', user.AllUser.status);\n  userId = response.body.data.id;\n});",
+                  "err": {},
+                  "uuid": "62ab5282-cd47-47bb-bc58-3e210720c637",
+                  "parentUUID": "f3bbc3b0-9603-47c1-a50c-9d434004a061",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "62ab5282-cd47-47bb-bc58-3e210720c637"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 1288,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "72e30bf4-0c54-4476-b5c2-107319e40270",
+              "title": "When I send POST /User sending only one field ",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "(Name) - Then it should return a message informing that EMAIL, GENDER AND STATUS cannot be blank",
+                  "fullTitle": "Given the User API When I send POST /User sending only one field  (Name) - Then it should return a message informing that EMAIL, GENDER AND STATUS cannot be blank",
+                  "timedOut": null,
+                  "duration": 344,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.request({\n  method: 'post',\n  url: 'https://gorest.co.in/public/v1/users',\n  headers: {\n    'Authorization': 'Bearer ' + Cypress.env('accessToken'),\n    'Accept': 'application/json',\n    'Content-Type': 'application/json'\n  },\n  body: user.name,\n  failOnStatusCode: false\n}).then(response => {\n  cy.log(JSON.stringify(response.body));\n  expect(response.status).be.eq(422);\n  expect(response.body.data[0].message).be.eq(\"can't be blank\");\n  expect(response.body.data[0].field).be.eq(\"email\");\n  expect(response.body.data[1].message).be.eq(\"can't be blank\");\n  expect(response.body.data[1].field).be.eq(\"gender\");\n  expect(response.body.data[2].message).be.eq(\"can't be blank\");\n  expect(response.body.data[2].field).be.eq(\"status\"); //userId = res.body.data.id;\n});",
+                  "err": {},
+                  "uuid": "604ce56c-da9a-4234-a561-6fb11b412e9b",
+                  "parentUUID": "72e30bf4-0c54-4476-b5c2-107319e40270",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "(Email) - Then it should return a message informing that NAME, GENDER AND STATUS cannot be blank",
+                  "fullTitle": "Given the User API When I send POST /User sending only one field  (Email) - Then it should return a message informing that NAME, GENDER AND STATUS cannot be blank",
+                  "timedOut": null,
+                  "duration": 334,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.request({\n  method: 'post',\n  url: 'https://gorest.co.in/public/v1/users',\n  headers: {\n    'Authorization': 'Bearer ' + Cypress.env('accessToken'),\n    'Accept': 'application/json',\n    'Content-Type': 'application/json'\n  },\n  body: user.email,\n  failOnStatusCode: false\n}).then(response => {\n  cy.log(JSON.stringify(response.body));\n  expect(response.status).be.eq(422);\n  expect(response.body.data[0].message).be.eq(\"can't be blank\");\n  expect(response.body.data[0].field).be.eq(\"name\");\n  expect(response.body.data[1].message).be.eq(\"can't be blank\");\n  expect(response.body.data[1].field).be.eq(\"gender\");\n  expect(response.body.data[2].message).be.eq(\"can't be blank\");\n  expect(response.body.data[2].field).be.eq(\"status\"); //userId = res.body.data.id;\n});",
+                  "err": {},
+                  "uuid": "19d022a4-bff7-45e0-870e-c1e195083de9",
+                  "parentUUID": "72e30bf4-0c54-4476-b5c2-107319e40270",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "(Gender) - Then it should return a message informing that NAME, EMAIL AND STATUS cannot be blank",
+                  "fullTitle": "Given the User API When I send POST /User sending only one field  (Gender) - Then it should return a message informing that NAME, EMAIL AND STATUS cannot be blank",
+                  "timedOut": null,
+                  "duration": 328,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.request({\n  method: 'post',\n  url: 'https://gorest.co.in/public/v1/users',\n  headers: {\n    'Authorization': 'Bearer ' + Cypress.env('accessToken'),\n    'Accept': 'application/json',\n    'Content-Type': 'application/json'\n  },\n  body: user.gender,\n  failOnStatusCode: false\n}).then(response => {\n  cy.log(JSON.stringify(response.body));\n  expect(response.status).be.eq(422);\n  expect(response.body.data[0].message).be.eq(\"can't be blank\");\n  expect(response.body.data[0].field).be.eq(\"email\");\n  expect(response.body.data[1].message).be.eq(\"can't be blank\");\n  expect(response.body.data[1].field).be.eq(\"name\");\n  expect(response.body.data[2].message).be.eq(\"can't be blank\");\n  expect(response.body.data[2].field).be.eq(\"status\"); //userId = res.body.data.id;\n});",
+                  "err": {},
+                  "uuid": "82e78555-4408-46c8-a17d-fadf87831865",
+                  "parentUUID": "72e30bf4-0c54-4476-b5c2-107319e40270",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "(Status) - Then it should return a message informing that NAME, EMAIL AND STATUS cannot be blank",
+                  "fullTitle": "Given the User API When I send POST /User sending only one field  (Status) - Then it should return a message informing that NAME, EMAIL AND STATUS cannot be blank",
+                  "timedOut": null,
+                  "duration": 332,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.request({\n  method: 'post',\n  url: 'https://gorest.co.in/public/v1/users',\n  headers: {\n    'Authorization': 'Bearer ' + Cypress.env('accessToken'),\n    'Accept': 'application/json',\n    'Content-Type': 'application/json'\n  },\n  body: user.status,\n  failOnStatusCode: false\n}).then(response => {\n  cy.log(JSON.stringify(response.body));\n  expect(response.status).be.eq(422);\n  expect(response.body.data[0].message).be.eq(\"can't be blank\");\n  expect(response.body.data[0].field).be.eq(\"email\");\n  expect(response.body.data[1].message).be.eq(\"can't be blank\");\n  expect(response.body.data[1].field).be.eq(\"name\");\n  expect(response.body.data[2].message).be.eq(\"can't be blank\");\n  expect(response.body.data[2].field).be.eq(\"gender\"); //userId = res.body.data.id;\n});",
+                  "err": {},
+                  "uuid": "af2c2ffe-0ed3-40bf-ae0c-65f3d9b4c39c",
+                  "parentUUID": "72e30bf4-0c54-4476-b5c2-107319e40270",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "604ce56c-da9a-4234-a561-6fb11b412e9b",
+                "19d022a4-bff7-45e0-870e-c1e195083de9",
+                "82e78555-4408-46c8-a17d-fadf87831865",
+                "af2c2ffe-0ed3-40bf-ae0c-65f3d9b4c39c"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 1338,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "c2dedd33-3a61-4510-8313-192c581760eb",
+              "title": "When I send POST /User with null fields",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Then it should return me an error 422 informing that each field must be not null",
+                  "fullTitle": "Given the User API When I send POST /User with null fields Then it should return me an error 422 informing that each field must be not null",
+                  "timedOut": null,
+                  "duration": 345,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.request({\n  method: 'post',\n  url: 'https://gorest.co.in/public/v1/users',\n  headers: {\n    'Authorization': 'Bearer ' + Cypress.env('accessToken'),\n    'Accept': 'application/json',\n    'Content-Type': 'application/json'\n  },\n  body: user.nullValues,\n  failOnStatusCode: false\n}).then(response => {\n  cy.log(JSON.stringify(response.body));\n  expect(response.status).be.eq(422);\n  expect(response.body.data[0].message).be.eq(\"can't be blank\");\n  expect(response.body.data[0].field).be.eq(\"email\");\n  expect(response.body.data[1].message).be.eq(\"can't be blank\");\n  expect(response.body.data[1].field).be.eq(\"name\");\n  expect(response.body.data[2].message).be.eq(\"can't be blank\");\n  expect(response.body.data[2].field).be.eq(\"gender\");\n  expect(response.body.data[3].message).be.eq(\"can't be blank\");\n  expect(response.body.data[3].field).be.eq(\"status\"); //userId = res.body.data.id;\n});",
+                  "err": {},
+                  "uuid": "3431babd-65f8-4b9f-a9a9-4e7d0cbdee9f",
+                  "parentUUID": "c2dedd33-3a61-4510-8313-192c581760eb",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "3431babd-65f8-4b9f-a9a9-4e7d0cbdee9f"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 345,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "641a62a5-f46c-49a7-ba5b-80be4959e5c9",
+              "title": "When I send POST /User without accessToken",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Then it should return an auth error",
+                  "fullTitle": "Given the User API When I send POST /User without accessToken Then it should return an auth error",
+                  "timedOut": null,
+                  "duration": 316,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.request({\n  method: 'post',\n  url: 'https://gorest.co.in/public/v1/users',\n  headers: {\n    'Authorization': 'Bearer ',\n    'Accept': 'application/json',\n    'Content-Type': 'application/json'\n  },\n  body: {},\n  //Preciso declarar isso para que não pare o teste caso dê erro\n  failOnStatusCode: false\n}).then(response => {\n  cy.log(JSON.stringify(response.body));\n  expect(response.status).to.eq(401);\n  expect(response.body.data.message).to.eq('Authentication failed');\n});",
+                  "err": {},
+                  "uuid": "cd062e59-f980-4e95-b208-efb67daec46b",
+                  "parentUUID": "641a62a5-f46c-49a7-ba5b-80be4959e5c9",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "cd062e59-f980-4e95-b208-efb67daec46b"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 316,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.0.1"
+    },
+    "marge": {
+      "options": {
+        "charts": true,
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress/report/mochawesome-report"
+      },
+      "version": "6.0.1"
+    }
+  }
+}

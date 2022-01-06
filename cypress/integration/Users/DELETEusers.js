@@ -19,10 +19,10 @@ describe('Given User API', () => {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json'
                     }
-                }).then((res) => {
-                    expect(res.status).to.eq(204);
-                    cy.log(JSON.stringify(res.body));
-                    expect(res.body.data).to.eq(undefined);
+                }).then((response) => {
+                    expect(response.status).to.eq(204);
+                    cy.log(JSON.stringify(response.body));
+                    expect(response.body.data).to.eq(undefined);
                 })
         })
     });
@@ -39,10 +39,10 @@ describe('Given User API', () => {
                         'Content-Type': 'application/json'
                     },
                     failOnStatusCode: false
-                }).then((res) => {
-                    cy.log(JSON.stringify(res.body))
-                    expect(res.status).to.eq(404);
-                    expect(res.body.data.message).to.eq('Resource not found')
+                }).then((response) => {
+                    cy.log(JSON.stringify(response.body))
+                    expect(response.status).to.eq(404);
+                    expect(response.body.data.message).to.eq('Resource not found')
                 })
         });
     });
@@ -57,10 +57,10 @@ describe('Given User API', () => {
                         'Content-Type': 'application/json',
                     },
                     failOnStatusCode: false
-                }).then((res) => {
-                    cy.log(JSON.stringify(res.body));
-                    expect(res.status).to.eq(404);
-                    expect(res.body.data.message).to.eq('Resource not found')
+                }).then((response) => {
+                    cy.log(JSON.stringify(response.body));
+                    expect(response.status).to.eq(404);
+                    expect(response.body.data.message).to.eq('Resource not found')
                 })
         });
     })

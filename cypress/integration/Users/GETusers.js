@@ -10,20 +10,19 @@ describe('Given the Users api', () => {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 }
-            }).then((res) => {
-                cy.log(JSON.stringify(res.body));
-                expect(res.status).to.eq(200);
-                expect(res.body.meta.pagination.limit).to.eq(res.body.data.length);
-                Cypress._.each(res.body.data, (users) => {
+            }).then((response) => {
+                cy.log(JSON.stringify(response.body));
+                expect(response.status).to.eq(200);
+                expect(response.body.meta.pagination.limit).to.eq(response.body.data.length);
+                Cypress._.each(response.body.data, (users) => {
                     expect(users).to.have.all.keys('id', 'name', 'email', 'gender', 'status');
                     expect(users.id).to.be.a('number').and.not.be.null;
                     expect(users.email).to.not.be.null;
                     expect(users.gender).to.not.be.null;
                     expect(users.status).to.not.be.null;
                 })
-                var usuario = res.body.data[0];
+                var usuario = response.body.data[0];
                 cy.savingGetUser(usuario.id, usuario.name, usuario.email, usuario.gender, usuario.status);
-                //expect(res.body.data[0].email).to.not.be.null;
             })
         });
     });
@@ -34,8 +33,6 @@ describe('Given the Users api', () => {
 
             cy.readFile('cypress/fixtures/GetUser/randomUserFromGET.json').then((User) => {
                 user = User;
-            
-            
 
                 cy.request({
                     method: 'GET',
@@ -44,15 +41,15 @@ describe('Given the Users api', () => {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json'
                     }
-                }).then((res) => {
-                    expect(res.status).to.eq(200);
-                    cy.log(JSON.stringify(res.body));
-                    expect(res.body.data).to.have.all.keys('id', 'name', 'email', 'gender', 'status');
-                    expect(res.body.data).has.property('id', user.id);
-                    expect(res.body.data).has.property('name', user.name)
-                    expect(res.body.data).has.property('gender', user.gender)
-                    expect(res.body.data).has.property('email', user.email)
-                    expect(res.body.data).has.property('status', user.status)
+                }).then((response) => {
+                    expect(response.status).to.eq(200);
+                    cy.log(JSON.stringify(response.body));
+                    expect(response.body.data).to.have.all.keys('id', 'name', 'email', 'gender', 'status');
+                    expect(response.body.data).has.property('id', user.id);
+                    expect(response.body.data).has.property('name', user.name)
+                    expect(response.body.data).has.property('gender', user.gender)
+                    expect(response.body.data).has.property('email', user.email)
+                    expect(response.body.data).has.property('status', user.status)
                 })
             })
         })
@@ -68,10 +65,10 @@ describe('Given the Users api', () => {
                     'Content-Type': 'application/json'
                 },
                 failOnStatusCode: false
-            }).then((res)=>{
-                expect(res.status).to.eq(404);
-                cy.log(JSON.stringify(res.body))
-                expect(res.body.data.message).to.eq('Resource not found')
+            }).then((response)=>{
+                expect(response.status).to.eq(404);
+                cy.log(JSON.stringify(response.body))
+                expect(response.body.data.message).to.eq('Resource not found')
             })
         });
     })

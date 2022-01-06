@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "clean:reports":"(if exist cypress\\report (rmdir /Q /S cypress\\report)) && mkdir cypress\\report && mkdir cypress\\report\\mocha  &&  mkdir cypress\\report\\mochawesome-report",
-    "merge":"mochawesome-merge cypress/report/mochawesome-report/*.json > cypress/report/output.json",
+    "clean:reports": "(if exist cypress\\report (rmdir /Q /S cypress\\report)) && mkdir cypress\\report && mkdir cypress\\report\\mocha  &&  mkdir cypress\\report\\mochawesome-report",
+    "merge": "mochawesome-merge cypress/report/mochawesome-report/*.json > cypress/report/output.json",
     "generate_report": "marge cypress/report/output.json --reportDir ./ --inline",
-    "final_report":"npm run merge && npm run generate_report",
+    "final_report": "npm run merge && npm run generate_report",
     "Cypress:tests": "npm run clean:reports && npx cypress run && npm run final_report"
   },
   "keywords": [],

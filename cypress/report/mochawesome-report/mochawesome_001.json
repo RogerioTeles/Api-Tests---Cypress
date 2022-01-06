@@ -5,9 +5,9 @@
     "passes": 3,
     "pending": 0,
     "failures": 0,
-    "start": "2022-01-05T02:46:43.722Z",
-    "end": "2022-01-05T02:46:46.237Z",
-    "duration": 2515,
+    "start": "2022-01-06T02:02:12.108Z",
+    "end": "2022-01-06T02:02:15.685Z",
+    "duration": 3577,
     "testsRegistered": 3,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "9a31fafa-c3c2-4008-a6cb-ef65daba8532",
+      "uuid": "bdf93d4a-e073-40f1-915b-ef8b73875e3f",
       "title": "",
       "fullFile": "cypress/integration/Users/GETusers.js",
       "file": "cypress/integration/Users/GETusers.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "d4c983d0-b4ff-4d88-a9bb-6ce159354d38",
+          "uuid": "28688d82-292d-490b-82e9-80e99acc1b2c",
           "title": "Given the Users api",
           "fullFile": "",
           "file": "",
@@ -36,7 +36,7 @@
           "tests": [],
           "suites": [
             {
-              "uuid": "f3c5b697-911e-4980-9e19-8e757c7a154d",
+              "uuid": "be582070-92f4-4651-84ea-2a4871d97349",
               "title": "When I Send Get /users",
               "fullFile": "",
               "file": "",
@@ -47,7 +47,7 @@
                   "title": "Then it should return a list with 20 registered users",
                   "fullTitle": "Given the Users api When I Send Get /users Then it should return a list with 20 registered users",
                   "timedOut": null,
-                  "duration": 1719,
+                  "duration": 2423,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -56,26 +56,26 @@
                   "context": null,
                   "code": "cy.request({\n  method: 'GET',\n  url: 'https://gorest.co.in/public/v1/users/',\n  headers: {\n    'Accept': 'application/json',\n    'Content-Type': 'application/json'\n  }\n}).then(res => {\n  cy.log(JSON.stringify(res.body));\n  expect(res.status).to.eq(200);\n  expect(res.body.meta.pagination.limit).to.eq(res.body.data.length);\n  Cypress._.each(res.body.data, users => {\n    expect(users).to.have.all.keys('id', 'name', 'email', 'gender', 'status');\n    expect(users.id).to.be.a('number').and.not.be.null;\n    expect(users.email).to.not.be.null;\n    expect(users.gender).to.not.be.null;\n    expect(users.status).to.not.be.null;\n  });\n  var usuario = res.body.data[0];\n  cy.savingGetUser(usuario.id, usuario.name, usuario.email, usuario.gender, usuario.status); //expect(res.body.data[0].email).to.not.be.null;\n});",
                   "err": {},
-                  "uuid": "96996f7b-ffe2-4b71-ada6-9f94804c235d",
-                  "parentUUID": "f3c5b697-911e-4980-9e19-8e757c7a154d",
+                  "uuid": "9f35d847-d769-4b82-a030-6d71b8168b87",
+                  "parentUUID": "be582070-92f4-4651-84ea-2a4871d97349",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "96996f7b-ffe2-4b71-ada6-9f94804c235d"
+                "9f35d847-d769-4b82-a030-6d71b8168b87"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 1719,
+              "duration": 2423,
               "root": false,
               "rootEmpty": false,
               "_timeout": 2000
             },
             {
-              "uuid": "bfbb0518-ef91-4794-a83f-689df7bf5ce2",
+              "uuid": "becd9d6a-e79f-46d3-9356-70b06784bf83",
               "title": "When i send GET /users passing user id as an URL param",
               "fullFile": "",
               "file": "",
@@ -86,7 +86,7 @@
                   "title": "Then it should return only the filtered user",
                   "fullTitle": "Given the Users api When i send GET /users passing user id as an URL param Then it should return only the filtered user",
                   "timedOut": null,
-                  "duration": 365,
+                  "duration": 475,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -95,26 +95,26 @@
                   "context": null,
                   "code": "let user = {};\ncy.readFile('cypress/fixtures/GetUser/randomUserFromGET.json').then(User => {\n  user = User;\n  cy.request({\n    method: 'GET',\n    url: 'https://gorest.co.in/public/v1/users/' + user.id,\n    headers: {\n      'Accept': 'application/json',\n      'Content-Type': 'application/json'\n    }\n  }).then(res => {\n    expect(res.status).to.eq(200);\n    cy.log(JSON.stringify(res.body));\n    expect(res.body.data).to.have.all.keys('id', 'name', 'email', 'gender', 'status');\n    expect(res.body.data).has.property('id', user.id);\n    expect(res.body.data).has.property('name', user.name);\n    expect(res.body.data).has.property('gender', user.gender);\n    expect(res.body.data).has.property('email', user.email);\n    expect(res.body.data).has.property('status', user.status);\n  });\n});",
                   "err": {},
-                  "uuid": "539fa5be-ab24-4974-85cd-a46868ac3c76",
-                  "parentUUID": "bfbb0518-ef91-4794-a83f-689df7bf5ce2",
+                  "uuid": "c140356f-3da6-4236-a39e-081f5cb525da",
+                  "parentUUID": "becd9d6a-e79f-46d3-9356-70b06784bf83",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "539fa5be-ab24-4974-85cd-a46868ac3c76"
+                "c140356f-3da6-4236-a39e-081f5cb525da"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 365,
+              "duration": 475,
               "root": false,
               "rootEmpty": false,
               "_timeout": 2000
             },
             {
-              "uuid": "8f8ee023-b9b9-4edf-8b54-977c06cba863",
+              "uuid": "58f645c7-1aba-4691-b81b-36d9571f07ed",
               "title": "When i send GET /user passing an userid that doesnt exists as an URL Param",
               "fullFile": "",
               "file": "",
@@ -125,7 +125,7 @@
                   "title": "Then it should return an message informing that the user was not found",
                   "fullTitle": "Given the Users api When i send GET /user passing an userid that doesnt exists as an URL Param Then it should return an message informing that the user was not found",
                   "timedOut": null,
-                  "duration": 337,
+                  "duration": 391,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -134,20 +134,20 @@
                   "context": null,
                   "code": "cy.request({\n  method: 'get',\n  url: 'https://gorest.co.in/public/v1/users/0000',\n  headers: {\n    'Accept': 'application/json',\n    'Content-Type': 'application/json'\n  },\n  failOnStatusCode: false\n}).then(res => {\n  expect(res.status).to.eq(404);\n  cy.log(JSON.stringify(res.body));\n  expect(res.body.data.message).to.eq('Resource not found');\n});",
                   "err": {},
-                  "uuid": "3cea219d-1260-4d3d-85f3-49e76e5101f1",
-                  "parentUUID": "8f8ee023-b9b9-4edf-8b54-977c06cba863",
+                  "uuid": "d5b0ba30-d661-4460-aceb-6788728de261",
+                  "parentUUID": "58f645c7-1aba-4691-b81b-36d9571f07ed",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "3cea219d-1260-4d3d-85f3-49e76e5101f1"
+                "d5b0ba30-d661-4460-aceb-6788728de261"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 337,
+              "duration": 391,
               "root": false,
               "rootEmpty": false,
               "_timeout": 2000

@@ -5,9 +5,9 @@
     "passes": 3,
     "pending": 0,
     "failures": 0,
-    "start": "2022-01-05T02:46:36.000Z",
-    "end": "2022-01-05T02:46:38.907Z",
-    "duration": 2907,
+    "start": "2022-01-06T02:01:59.761Z",
+    "end": "2022-01-06T02:02:03.702Z",
+    "duration": 3941,
     "testsRegistered": 3,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "d3a0735c-c733-446f-beb1-e9d8491b60eb",
+      "uuid": "9c842727-06d7-479a-94e3-344ade2267af",
       "title": "",
       "fullFile": "cypress/integration/Users/DELETEusers.js",
       "file": "cypress/integration/Users/DELETEusers.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "51ac5915-07bd-428b-97f3-a3572738ace1",
+          "uuid": "309d71c2-a1be-4b47-af35-8908549f68ac",
           "title": "Given User API",
           "fullFile": "",
           "file": "",
@@ -36,7 +36,7 @@
           "tests": [],
           "suites": [
             {
-              "uuid": "52bae3a1-ab30-41fc-bceb-b88430f07bba",
+              "uuid": "4accdf49-4f71-4efd-ac5f-f8439b398db0",
               "title": "When I send DELETE /user passing an userID as an URL param",
               "fullFile": "",
               "file": "",
@@ -47,7 +47,7 @@
                   "title": "Then the user should be deleted from the API",
                   "fullTitle": "Given User API When I send DELETE /user passing an userID as an URL param Then the user should be deleted from the API",
                   "timedOut": null,
-                  "duration": 2180,
+                  "duration": 3026,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -56,26 +56,26 @@
                   "context": null,
                   "code": "cy.request({\n  method: 'delete',\n  url: 'https://gorest.co.in/public/v1/users/' + userToDelete.id,\n  headers: {\n    'Authorization': 'Bearer ' + Cypress.env('accessToken'),\n    'Accept': 'application/json',\n    'Content-Type': 'application/json'\n  }\n}).then(res => {\n  expect(res.status).to.eq(204);\n  cy.log(JSON.stringify(res.body));\n  expect(res.body.data).to.eq(undefined);\n});",
                   "err": {},
-                  "uuid": "0077d9d5-8b90-432f-bad1-00ec08e7e8a7",
-                  "parentUUID": "52bae3a1-ab30-41fc-bceb-b88430f07bba",
+                  "uuid": "773eecf5-0002-4195-9598-8ebabec9018f",
+                  "parentUUID": "4accdf49-4f71-4efd-ac5f-f8439b398db0",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "0077d9d5-8b90-432f-bad1-00ec08e7e8a7"
+                "773eecf5-0002-4195-9598-8ebabec9018f"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 2180,
+              "duration": 3026,
               "root": false,
               "rootEmpty": false,
               "_timeout": 2000
             },
             {
-              "uuid": "99891489-2bbe-49df-bf44-9062ac014408",
+              "uuid": "3483bd6e-212b-4128-b875-3dea940a74c5",
               "title": "When I send DELETE /user without access token",
               "fullFile": "",
               "file": "",
@@ -86,7 +86,7 @@
                   "title": "Then it should return an auth error",
                   "fullTitle": "Given User API When I send DELETE /user without access token Then it should return an auth error",
                   "timedOut": null,
-                  "duration": 352,
+                  "duration": 459,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -95,26 +95,26 @@
                   "context": null,
                   "code": "var accessToken = '';\ncy.request({\n  method: 'delete',\n  url: 'https://gorest.co.in/public/v1/users/' + userToDelete.id,\n  headers: {\n    'Authorization': 'Bearer ',\n    'Accept': 'application/json',\n    'Content-Type': 'application/json'\n  },\n  failOnStatusCode: false\n}).then(res => {\n  cy.log(JSON.stringify(res.body));\n  expect(res.status).to.eq(404);\n  expect(res.body.data.message).to.eq('Resource not found');\n});",
                   "err": {},
-                  "uuid": "b28f6bfc-c82b-4a18-8225-203375d20095",
-                  "parentUUID": "99891489-2bbe-49df-bf44-9062ac014408",
+                  "uuid": "d52cd561-97d8-4073-ab0b-7a2e649ee823",
+                  "parentUUID": "3483bd6e-212b-4128-b875-3dea940a74c5",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "b28f6bfc-c82b-4a18-8225-203375d20095"
+                "d52cd561-97d8-4073-ab0b-7a2e649ee823"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 352,
+              "duration": 459,
               "root": false,
               "rootEmpty": false,
               "_timeout": 2000
             },
             {
-              "uuid": "23c47894-17c0-4780-99ce-c09abafe21bc",
+              "uuid": "75e56bfa-cc26-496d-b9a4-ab685f7c5152",
               "title": "When I send DELETE /user passing an userID that doesnt exist or was already deleted as an URL param",
               "fullFile": "",
               "file": "",
@@ -125,7 +125,7 @@
                   "title": "Then it should return an message informing that the user was not found",
                   "fullTitle": "Given User API When I send DELETE /user passing an userID that doesnt exist or was already deleted as an URL param Then it should return an message informing that the user was not found",
                   "timedOut": null,
-                  "duration": 348,
+                  "duration": 402,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -134,20 +134,20 @@
                   "context": null,
                   "code": "cy.request({\n  method: 'delete',\n  url: 'https://gorest.co.in/public/v1/users/' + userToDelete.id,\n  headers: {\n    'Authorization': 'Bearer ' + Cypress.env('accessToken'),\n    'Accept': 'application/json',\n    'Content-Type': 'application/json'\n  },\n  failOnStatusCode: false\n}).then(res => {\n  cy.log(JSON.stringify(res.body));\n  expect(res.status).to.eq(404);\n  expect(res.body.data.message).to.eq('Resource not found');\n});",
                   "err": {},
-                  "uuid": "64547d17-cd15-4bc8-8426-7ff147cbbff6",
-                  "parentUUID": "23c47894-17c0-4780-99ce-c09abafe21bc",
+                  "uuid": "5184af3b-2953-4513-b02c-9d016c6e3167",
+                  "parentUUID": "75e56bfa-cc26-496d-b9a4-ab685f7c5152",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "64547d17-cd15-4bc8-8426-7ff147cbbff6"
+                "5184af3b-2953-4513-b02c-9d016c6e3167"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 348,
+              "duration": 402,
               "root": false,
               "rootEmpty": false,
               "_timeout": 2000

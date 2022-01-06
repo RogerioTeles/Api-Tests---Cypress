@@ -3,6 +3,7 @@ let user = {}
 var userId;
 
 describe('Given the User API', () => {
+
     before(() => {
         //cy.generateRandomUser();
         cy.generateRandomData('post');
@@ -11,11 +12,12 @@ describe('Given the User API', () => {
         })
     });
 
-    context('When I send POST /User with all fields ', () => {
+    after(() => {
+        cy.deleteUser(userId);
+    })
 
-        after(() => {
-            cy.deleteUser(userId);
-        })
+    context('When I send POST /User with all fields ', () => {
+        
         it('Then it should create a new user', () => {
             cy.request({
                 method: 'post',
@@ -48,7 +50,7 @@ describe('Given the User API', () => {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: user.name, 
+                body: user.name,
                 failOnStatusCode: false
             }).then((response) => {
                 cy.log(JSON.stringify(response.body));
@@ -59,7 +61,7 @@ describe('Given the User API', () => {
                 expect(response.body.data[1].field).be.eq("gender")
                 expect(response.body.data[2].message).be.eq("can't be blank")
                 expect(response.body.data[2].field).be.eq("status")
-                //userId = res.body.data.id;
+
             })
         });
 
@@ -72,7 +74,7 @@ describe('Given the User API', () => {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: user.email, 
+                body: user.email,
                 failOnStatusCode: false
             }).then((response) => {
                 cy.log(JSON.stringify(response.body));
@@ -83,7 +85,7 @@ describe('Given the User API', () => {
                 expect(response.body.data[1].field).be.eq("gender")
                 expect(response.body.data[2].message).be.eq("can't be blank")
                 expect(response.body.data[2].field).be.eq("status")
-                //userId = res.body.data.id;
+
             })
         });
 
@@ -96,7 +98,7 @@ describe('Given the User API', () => {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: user.gender, 
+                body: user.gender,
                 failOnStatusCode: false
             }).then((response) => {
                 cy.log(JSON.stringify(response.body));
@@ -107,7 +109,6 @@ describe('Given the User API', () => {
                 expect(response.body.data[1].field).be.eq("name")
                 expect(response.body.data[2].message).be.eq("can't be blank")
                 expect(response.body.data[2].field).be.eq("status")
-                //userId = res.body.data.id;
             })
         });
 
@@ -120,7 +121,7 @@ describe('Given the User API', () => {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: user.status, 
+                body: user.status,
                 failOnStatusCode: false
             }).then((response) => {
                 cy.log(JSON.stringify(response.body));
@@ -132,7 +133,6 @@ describe('Given the User API', () => {
                 expect(response.body.data[2].message).be.eq("can't be blank")
                 expect(response.body.data[2].field).be.eq("gender")
 
-                //userId = res.body.data.id;
             })
         });
     })
@@ -160,11 +160,120 @@ describe('Given the User API', () => {
                 expect(response.body.data[2].field).be.eq("gender")
                 expect(response.body.data[3].message).be.eq("can't be blank")
                 expect(response.body.data[3].field).be.eq("status")
-                //userId = res.body.data.id;
+              
             })
         });
     })
 
+    context("When i sent null values in each field", () => {
+        it.only("Then it shoud return me an error where shows that the fields i sent could not be null - Name", () => {
+
+            cy.request({
+                method: 'post',
+                url: 'https://gorest.co.in/public/v1/users',
+                headers: {
+                    'Authorization': 'Bearer ' + Cypress.env('accessToken'),
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: user.nullName,
+                failOnStatusCode: false
+            }).then((response) => {
+                cy.log(JSON.stringify(response.body))
+                expect(response.status).be.eq(422);
+                expect(response.body.data[0].message).be.eq("can't be blank")
+                expect(response.body.data[0].field).be.eq("email")
+                expect(response.body.data[1].message).be.eq("can't be blank")
+                expect(response.body.data[1].field).be.eq("name")
+                expect(response.body.data[2].message).be.eq("can't be blank")
+                expect(response.body.data[2].field).be.eq("gender")
+                expect(response.body.data[3].message).be.eq("can't be blank")
+                expect(response.body.data[3].field).be.eq("status")
+              
+            })
+        });
+
+        it.only("Then it shoud return me an error where shows that the fields i sent could not be null - Email", () => {
+
+            cy.request({
+                method: 'post',
+                url: 'https://gorest.co.in/public/v1/users',
+                headers: {
+                    'Authorization': 'Bearer ' + Cypress.env('accessToken'),
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: user.nullEmail,
+                failOnStatusCode: false
+            }).then((response) => {
+                cy.log(JSON.stringify(response.body))
+                expect(response.status).be.eq(422);
+                expect(response.body.data[0].message).be.eq("can't be blank")
+                expect(response.body.data[0].field).be.eq("email")
+                expect(response.body.data[1].message).be.eq("can't be blank")
+                expect(response.body.data[1].field).be.eq("name")
+                expect(response.body.data[2].message).be.eq("can't be blank")
+                expect(response.body.data[2].field).be.eq("gender")
+                expect(response.body.data[3].message).be.eq("can't be blank")
+                expect(response.body.data[3].field).be.eq("status")
+               
+            })
+        });
+
+        it.only("Then it shoud return me an error where shows that the fields i sent could not be null - Gender", () => {
+
+            cy.request({
+                method: 'post',
+                url: 'https://gorest.co.in/public/v1/users',
+                headers: {
+                    'Authorization': 'Bearer ' + Cypress.env('accessToken'),
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: user.nullGender,
+                failOnStatusCode: false
+            }).then((response) => {
+                cy.log(JSON.stringify(response.body))
+                expect(response.status).be.eq(422);
+                expect(response.body.data[0].message).be.eq("can't be blank")
+                expect(response.body.data[0].field).be.eq("email")
+                expect(response.body.data[1].message).be.eq("can't be blank")
+                expect(response.body.data[1].field).be.eq("name")
+                expect(response.body.data[2].message).be.eq("can't be blank")
+                expect(response.body.data[2].field).be.eq("gender")
+                expect(response.body.data[3].message).be.eq("can't be blank")
+                expect(response.body.data[3].field).be.eq("status")
+
+            })
+        });
+        
+        it.only("Then it shoud return me an error where shows that the fields i sent could not be null - Status", () => {
+
+            cy.request({
+                method: 'post',
+                url: 'https://gorest.co.in/public/v1/users',
+                headers: {
+                    'Authorization': 'Bearer ' + Cypress.env('accessToken'),
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: user.nullStatus,
+                failOnStatusCode: false
+            }).then((response) => {
+                cy.log(JSON.stringify(response.body))
+                expect(response.status).be.eq(422);
+                expect(response.body.data[0].message).be.eq("can't be blank")
+                expect(response.body.data[0].field).be.eq("email")
+                expect(response.body.data[1].message).be.eq("can't be blank")
+                expect(response.body.data[1].field).be.eq("name")
+                expect(response.body.data[2].message).be.eq("can't be blank")
+                expect(response.body.data[2].field).be.eq("gender")
+                expect(response.body.data[3].message).be.eq("can't be blank")
+                expect(response.body.data[3].field).be.eq("status")
+
+            })
+        });
+    });
 
     context('When I send POST /User without accessToken', () => {
         it('Then it should return an auth error', () => {
@@ -177,7 +286,6 @@ describe('Given the User API', () => {
                     'Content-Type': 'application/json'
                 },
                 body: {},
-                //Preciso declarar isso para que não pare o teste caso dê erro
                 failOnStatusCode: false
             }).then((response) => {
                 cy.log(JSON.stringify(response.body))
@@ -186,6 +294,4 @@ describe('Given the User API', () => {
             })
         });
     })
-
-
 })

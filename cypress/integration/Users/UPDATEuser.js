@@ -9,7 +9,7 @@ before(() => {
         newUser = NewUser;
     })
 })
-describe.only('Given User API', () => {
+describe('Given User API', () => {
 
     beforeEach(() => {
         //Here i need to use readfile 'couse i am changing de data from this fixture but the
@@ -23,6 +23,7 @@ describe.only('Given User API', () => {
     after(() => {
         cy.deleteUser(userToBeUpdated.id);
     })
+
     context('When I already have an user and want to update it all', () => {
 
         it('Then it must have to return me 200 and the updated user s information with the same ID i sent de request.', () => {
@@ -48,7 +49,7 @@ describe.only('Given User API', () => {
                 cy.savingPostUser(userToBeUpdated.id, user.name, user.email, user.gender, user.status, 'update');
             })
         });
-        
+
     })
     context('When i want to change only one thing from user', () => {
         it('Then it should return the user with only one change - Name', () => {
@@ -144,8 +145,8 @@ describe.only('Given User API', () => {
         })
     })
 
-    context('When i send only null values',()=>{
-        it('Then it should return me an error informing that all fields i sent could not me null', () => {
+    context('When i send only null values', () => {
+        it('Then it should return me an error informing that all fields i sent could not be null', () => {
             cy.request({
                 method: 'patch',
                 url: 'https://gorest.co.in/public/v1/users/' + userToBeUpdated.id,
@@ -154,7 +155,6 @@ describe.only('Given User API', () => {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                
                 body: newUser.nullValues,
                 failOnStatusCode: false
             }).then((response) => {
@@ -172,7 +172,7 @@ describe.only('Given User API', () => {
         });
     })
 
-    context('When i sent null values in each field',()=>{
+    context('When i sent null values in each field', () => {
         it('Then it shoud return me an error where shows that the field i sent could not be null - Name', () => {
             cy.request({
                 method: 'patch',
@@ -182,7 +182,6 @@ describe.only('Given User API', () => {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                
                 body: newUser.nullName,
                 failOnStatusCode: false
             }).then((response) => {
@@ -202,7 +201,6 @@ describe.only('Given User API', () => {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                
                 body: newUser.nullEmail,
                 failOnStatusCode: false
             }).then((response) => {
@@ -222,7 +220,6 @@ describe.only('Given User API', () => {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                
                 body: newUser.nullGender,
                 failOnStatusCode: false
             }).then((response) => {
@@ -233,7 +230,7 @@ describe.only('Given User API', () => {
             })
         });
 
-        it('Then it shoud return me an error where shows that the field i sent could not be null - Gender', () => {
+        it('Then it shoud return me an error where shows that the field i sent could not be null - Status', () => {
             cy.request({
                 method: 'patch',
                 url: 'https://gorest.co.in/public/v1/users/' + userToBeUpdated.id,
@@ -242,7 +239,6 @@ describe.only('Given User API', () => {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                
                 body: newUser.nullStatus,
                 failOnStatusCode: false
             }).then((response) => {
@@ -253,8 +249,4 @@ describe.only('Given User API', () => {
             })
         });
     })
-
-    
-
-
 });

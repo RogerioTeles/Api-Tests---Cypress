@@ -19,6 +19,10 @@ describe.only('Given User API', () => {
             userToBeUpdated = UserToBeUpdated;
         })
     });
+
+    after(() => {
+        cy.deleteUser(userToBeUpdated.id);
+    })
     context('When I already have an user and want to update it all', () => {
 
         it('Then it must have to return me 200 and the updated user s information with the same ID i sent de request.', () => {

@@ -12,6 +12,10 @@ describe('Given the User API', () => {
     });
 
     context('When I send POST /User with all fields ', () => {
+
+        after(() => {
+            cy.deleteUser(userId);
+        })
         it('Then it should create a new user', () => {
             cy.request({
                 method: 'post',

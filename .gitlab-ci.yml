@@ -6,5 +6,5 @@ test:
   stage: Test
   script:
     - npm install
-    - npm npm install mochawesome-merge
+    - npm install mochawesome-merge
     - npm run Cypress:tests

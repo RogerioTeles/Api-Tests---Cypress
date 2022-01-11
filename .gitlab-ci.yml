@@ -7,4 +7,5 @@ test:
   script:
     - npm install
     - npm install mochawesome-merge
+    - npm install del-cli 
     - npm run Cypress:tests

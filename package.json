@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "clean:reports": "(if exist cypress\\report (rmdir /Q /S cypress\\report)) && mkdir cypress\\report && mkdir cypress\\report\\mocha  &&  mkdir cypress\\report\\mochawesome-report",
+    "teste": "del-cli --force cypress/report",
+    "clean:reports": "del-cli --force cypress/report",
     "merge": "mochawesome-merge cypress/report/mochawesome-report/*.json > cypress/report/output.json",
     "generate_report": "marge cypress/report/output.json --reportDir ./ --inline",
     "final_report": "npm run merge && npm run generate_report",
@@ -22,6 +23,7 @@
   "devDependencies": {
     "cypress": "^9.2.0",
     "cypress-multi-reporters": "^1.5.0",
+    "del-cli": "^4.0.1",
     "faker": "^5.5.3",
     "mocha": "^9.1.3",
     "mochawesome": "^7.0.1",

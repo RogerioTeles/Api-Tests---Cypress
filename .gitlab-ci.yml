@@ -3,7 +3,7 @@ stages:
 
 test:
   image: node:latest
-  stage: teste geral
+  stage: teste_geral
   script:
     - npm install
     - npm npm install mochawesome-merge

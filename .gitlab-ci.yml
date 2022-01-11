@@ -1,9 +1,9 @@
 stages:
-  - Cypress:tests
+  - Test
 
 test:
   image: node:latest
-  stage: teste_geral
+  stage: Test
   script:
     - npm install
     - npm npm install mochawesome-merge

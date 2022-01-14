@@ -6,9 +6,5 @@ test:
   stage: Test
   script:
     - npm ci
-    - Xvfb :99 &
-    - export DISPLAY=:99
     - npm install
-    - npm install mochawesome-merge
-    - npm install del-cli
     - npm run Cypress:tests

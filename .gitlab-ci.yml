@@ -8,3 +8,6 @@ test:
     - npm ci
     - npm install
     - npm run Cypress:tests
+  artifacts: 
+    paths:
+      - cypress/report/

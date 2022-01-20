@@ -29,6 +29,42 @@ Ao finalizar, execute o seguinte comando para abrir o cypress pela primeira vez:
 npx cypress run
 ```
 
+# Arquitetura do projeto:
+```
+Api-Tests---Cypress/
+  ├─  cypress/
+  │        │
+  │        ├── fixtures/
+  │        │   ├── *.json
+  │        │
+  │        ├── integration/
+  │        │   ├── User/
+  │        │   │   ├──  DELETE.spec.js
+  │        │   │   ├──  GET.spec.js
+  │        │   │   ├──  POST.spec.js
+  │        │       └──  UPDATE.spec.js
+  │        │
+  │        ├── plugins/
+  │        │   └── index.js
+  │        │
+  │        ├── report/
+  │        │   └── mocha/
+  │        │         └── mochafiles (*.json, *html)
+  │        │
+  │        ├── support/
+  │        │   ├── Commands.js
+  │        │   └── index.js
+  │        │  
+  │        └── videos/
+  │ 
+  ├── .gitlab-ci.yml
+  ├── node_modules/
+  ├── cypress.json
+  ├── cypress.env.json
+  ├── package-lock.json
+  ├── package.json
+  └── README.md
+```
 # 🚀 Estrutura do projeto:
 
 O diretório Cypress é organizado da seguinte maneira:
@@ -58,6 +94,11 @@ Then...
 - E em cada teste existem algumas validações que são feitas no response da requisição.
 -Exemplo:
 
+
+
+### 📄 Report:
+
+- Nessa pasta serão criados os relatórios ao final da execução de todos os testes...
 
 
 
@@ -122,5 +163,3 @@ Este projeto está sob a licença (sua licença) - veja o arquivo [LICENSE.md](h
 * etc.
 
 
----
-⌨️ com ❤️ por [Armstrong Lohãns](https://gist.github.com/lohhans) 😊

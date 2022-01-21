@@ -151,7 +151,11 @@ onde a partir do arquivo **.gitlab-ci.yml** foi possivel escrever um roteirozinh
 
 A explicação de como funciona esse arquivo pode ser visto na [documentação do Cypress](https://docs.cypress.io/guides/continuous-integration/gitlab-ci).
 
-Depois de montar esse arquivo e subir o projeto no gitlab, só precisei ajustar ele alguuuuuuuuumaas vezes (334556 vezes) para funcionar lindamente
+Depois de montar esse arquivo e subir o projeto no gitlab, só precisei ajustar ele alguuuuuuuuumaas vezes (334556 vezes) para funcionar lindamente.
+
+
+[Clicando aqui](https://gitlab.com/RogerioTeles/Api-Tests---Cypress/-/jobs) vocês conseguirão ver os jobs que foram executados em pipeline a cada commit
+do projeto no gitlab.
 
 ## ✒️ Autores
 

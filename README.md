@@ -90,76 +90,80 @@ Then...
 
 - Exemplo:
 
-
-- E em cada teste existem algumas validações que são feitas no response da requisição.
--Exemplo:
+![2022-01-19 23_13_05-Window](https://user-images.githubusercontent.com/53439651/150438534-1b0accd9-395f-40d2-bddf-ade271d5b652.png)
 
 
 
-### 📄 Report:
+- E em cada teste existem algumas validações que são feitas no response da requisição como por exemplo o status retornado, se é o que esperamos ao fazer a
+requisição com aqueles valores, além de outras validações específicas pra cada teste. 
 
-- Nessa pasta serão criados os relatórios ao final da execução de todos os testes...
+- Exemplo:
 
+![validandoresponse](https://user-images.githubusercontent.com/53439651/150438767-25fa9a05-42a4-48c9-9d18-219eb8deaf5b.png)
+
+
+### Report:
+
+- Nessa pasta serão criados os relatórios ao final da execução de todos os testes.
+
+Executando o comando abaixo, é iniciado os testes no modo Headless que, no final, 
+geram um arquivo html contendo informações sobre todos os testes excecutados.
+```
+npm run Cypress:all
+```
+Explicando melhor como isso acontece, são montados arquivos .json com dados dos testes executados que depois serão
+agrupados em um só para a criação do arquivo HTML
+
+![report](https://user-images.githubusercontent.com/53439651/150440144-00cf3b15-8b97-4185-b6e7-33a677436cd4.png)
 
 
 ## ⚙️ Executando os testes
 
-Explicar como executar os testes automatizados para este sistema.
+Existem algumas formas de executar os testes desse projeto:
 
-### 🔩 Analise os testes de ponta a ponta
-
-Explique que eles verificam esses testes e porquê.
+1° - Abrindo a interface do cypress e executando testes um a um:
 
 ```
-Dar exemplos
+npx cypress open
 ```
 
-### ⌨️ E testes de estilo de codificação
-
-Explique que eles verificam esses testes e porquê.
+2° - Rodar todos os testes em modo headless:
 
 ```
-Dar exemplos
+npm run Cypress:tests  Ou  npx Cypress run
 ```
 
-## 📦 Desenvolvimento
+3° - Rodar todos os testes e gerar arquivo de relatório:
 
-Adicione notas adicionais sobre como implantar isso em um sistema ativo
+```
+npm run Cypress:all
+```
 
-## 🛠️ Construído com
 
-Mencione as ferramentas que você usou para criar seu projeto
+## 👩🏼‍💻 CI
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - O framework web usado
-* [Maven](https://maven.apache.org/) - Gerente de Dependência
-* [ROME](https://rometools.github.io/rome/) - Usada para gerar RSS
+Tá, admito que a estrutura de CI é bem básica aqui mas foi muito divertido e estressante montar isso aqui  🥳🥳🥳🥳🥳🥳
 
-## 🖇️ Colaborando
+A estrutura pra rodar os testes desse projeto em pipeline em uma máquina virtual foi feita usando toda a estrutura de CI do GITLAB
+onde a partir do arquivo **.gitlab-ci.yml** foi possivel escrever um roteirozinho e colocar os pré-requisitos para execução desses testes na nuvem.
 
-Por favor, leia o [COLABORACAO.md](https://gist.github.com/usuario/linkParaInfoSobreContribuicoes) para obter detalhes sobre o nosso código de conduta e o processo para nos enviar pedidos de solicitação.
+![gitlabci](https://user-images.githubusercontent.com/53439651/150442106-83777b7d-374c-4c4c-91d2-3f5a8c2dac1f.png)
 
-## 📌 Versão
+A explicação de como funciona esse arquivo pode ser visto na [documentação do Cypress](https://docs.cypress.io/guides/continuous-integration/gitlab-ci).
 
-Nós usamos [SemVer](http://semver.org/) para controle de versão. Para as versões disponíveis, observe as [tags neste repositório](https://github.com/suas/tags/do/projeto). 
+Depois de montar esse arquivo e subir o projeto no gitlab, só precisei ajustar ele alguuuuuuuuumaas vezes (334556 vezes) para funcionar lindamente
 
 ## ✒️ Autores
 
-Mencione todos aqueles que ajudaram a levantar o projeto desde o seu início
+Basicamente eu, eu e eu.
 
-* **Um desenvolvedor** - *Trabalho Inicial* - [umdesenvolvedor](https://github.com/linkParaPerfil)
-* **Fulano De Tal** - *Documentação* - [fulanodetal](https://github.com/linkParaPerfil)
+* **Rogério Teles** - *Projeto de testes* - [GitHub](https://github.com/RogerioTeles)  -  [Linkedin](https://www.linkedin.com/in/rog%C3%A9rio-teles-80a2961b6/)
+* **Rogerio Teles** - *Readme* - [GitHub](https://github.com/RogerioTeles)  -  [Linkedin](https://www.linkedin.com/in/rog%C3%A9rio-teles-80a2961b6/)
 
-Você também pode ver a lista de todos os [colaboradores](https://github.com/usuario/projeto/colaboradores) que participaram deste projeto.
 
-## 📄 Licença
+## 🎁 Considerações finais
 
-Este projeto está sob a licença (sua licença) - veja o arquivo [LICENSE.md](https://github.com/usuario/projeto/licenca) para detalhes.
-
-## 🎁 Expressões de gratidão
-
-* Conte a outras pessoas sobre este projeto 📢
-* Convide alguém da equipe para uma cerveja 🍺 
-* Obrigado publicamente 🤓.
-* etc.
-
+* Foi bem divertido montar tudo isso aqui (menos o readme q foi beeeeeeeeem chato) 📢
+* Quem tiver sugestões de melhoria por favor me mandem mensagem no linkedin eu vou amar melhorar isso aqui.
+* Espero olhar isso aqui daqui a algum tempo e encontrar pontos onde poderia melhorar depois de aprender mais.
 
